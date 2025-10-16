@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridwan Abdul Azis | Web3 Developer & Community Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(100, 100, 200, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.98);
+            padding: 0.8rem 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #8b5cf6;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #8b5cf6;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #e2e8f0;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: #0f172a;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .profile-container {
+            margin: 60px 0 2rem 0; /* Added top margin to move profile image down */
+            position: relative;
+            z-index: 3;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(139, 92, 246, 0.3);
+            object-fit: cover;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #4a6cf7, #8b5cf6);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(74, 108, 247, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #e2e8f0;
+            border: 2px solid #4a6cf7;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(74, 108, 247, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #4a6cf7, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .download-cv {
+            margin-top: 2rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .skill-item {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(100, 100, 200, 0.2);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(50, 61, 79, 0.8);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: #8b5cf6;
+            margin-bottom: 1rem;
+        }
+
+        .skill-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .skill-item p {
+            color: #94a3b8;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(100, 100, 200, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #4a6cf7, #8b5cf6);
+            border-radius: 5px;
+            transition: width 1s ease;
+        }
+
+        .progress-text {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            padding: 0 2rem;
+        }
+
+        .portfolio-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(100, 100, 200, 0.2);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-card:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .portfolio-info p {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .contact-text {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            color: #cbd5e1;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(30, 41, 59, 0.7);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(50, 61, 79, 0.8);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #8b5cf6;
+        }
+
+        .contact-item a {
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #8b5cf6;
+        }
+
+        .contact-form {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(100, 100, 200, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(15, 23, 42, 0.7);
+            color: #e2e8f0;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: 2px solid #4a6cf7;
+        }
+
+        .success-message {
+            margin-top: 1rem;
+            color: #10b981;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(100, 100, 200, 0.2);
+        }
+
+        .footer p {
+            color: #94a3b8;
+        }
+
+        /* 3D Canvas */
+        #three-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(15, 23, 42, 0.95);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+            
+            .skills-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Ridwan Abdul Azis</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="particles-js"></div>
+        <canvas id="three-canvas"></canvas>
+        <div class="hero-content">
+            <div class="profile-container">
+                <img src="ppai.png" alt="Ridwan Abdul Azis" class="profile-img">
+            </div>
+            <h1>Ridwan Abdul Azis</h1>
+            <p class="subtitle">
+                Web & Blockchain Developer | Community Manager | Virtual Assistant | 
+                Automation & Bot Builder | Prompt Engineer
+            </p>
+            <div class="cta-buttons">
+                <a href="#portfolio" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I'm Ridwan Abdul Azis, a passionate Web & Blockchain Developer with hands-on experience building decentralized applications, automation systems, and community engagement tools.</p>
+                
+                <p>I've worked across multiple blockchain networks including Solana, Binance Smart Chain (BSC), and Ethereum, developing smart contracts and Web3 integrations that empower communities and digital ecosystems.</p>
+                
+                <p>Beyond coding, I've served as a Community Moderator for various crypto projects, managed Telegram communities, and provided Virtual Assistant services for digital teams worldwide.</p>
+                
+                <p>I'm also skilled in building automation bots and Telegram auto-share scripts, helping projects streamline community growth.</p>
+                
+                <p>Currently, I'm open to collaborations and freelance opportunities that combine creativity, technology, and innovation.</p>
+                
+                <a href="Ridwan_Abdul_Azis_CV (1).pdf" class="btn btn-primary download-cv">Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Next.js, React, TailwindCSS</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                    <div class="progress-text">90%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">⛓️</div>
+                    <h3>Blockchain Development</h3>
+                    <p>Solidity, Rust, Anchor</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                    <div class="progress-text">85%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🪙</div>
+                    <h3>Smart Contract Deployment</h3>
+                    <p>Solana, BSC, Ethereum</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
+                    <div class="progress-text">80%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🤖</div>
+                    <h3>Automation & Bot Builder</h3>
+                    <p>Telegram, Python, Node.js</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 88%"></div>
+                    </div>
+                    <div class="progress-text">88%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">👥</div>
+                    <h3>Community Management</h3>
+                    <p>Crypto Projects, Telegram</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 92%"></div>
+                    </div>
+                    <div class="progress-text">92%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🧠</div>
+                    <h3>Prompt Engineering & AI</h3>
+                    <p>AI Integration</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                    <div class="progress-text">85%</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-icon">🎧</div>
+                    <h3>Virtual Assistant</h3>
+                    <p>Task Automation, Scheduling</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                    <div class="progress-text">90%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="companyprofile.png" alt="Company Profile Website">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Company Profile Website</h3>
+                        <p>A professional company profile website template with a modern, customizable design.</p>
+                        <a href="https://company-profile-sample.vercel.app/" target="_blank" class="btn btn-secondary">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="landingpage.png" alt="Landing Page Sample">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Landing Page Sample</h3>
+                        <p>A responsive landing page example for digital products or startups.</p>
+                        <a href="https://landingpage-sample.vercel.app/" target="_blank" class="btn btn-secondary">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="portfolio-img">
+                        <img src="scoutcoin.png" alt="ScoutCoin Project">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>ScoutCoin Project</h3>
+                        <p>A crypto project website showcasing a Web3 concept with AI integration and an active community.</p>
+                        <a href="https://scoutcoin.fun" target="_blank" class="btn btn-secondary">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="contact-text">Let's collaborate! Whether you need a Web3 developer, automation expert, or community manager, I'm here to help you bring your ideas to life.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:Ridwanabdul002@gmail.com">Ridwanabdul002@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <p><a href="https://linkedin.com/in/ridwan-abdul-azis-61b09822b" target="_blank">linkedin.com/in/ridwan-abdul-azis-61b09822b</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <p><a href="https://t.me/Ridwanweb3" target="_blank">@Ridwanweb3</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <p><a href="tel:+6285647934601">085647934601</a></p>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p id="successMessage" class="success-message" style="display: none;">Thank you for your message! I will get back to you soon.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ridwan Abdul Azis. Built with modern web technologies.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js for the hero background
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize navigation toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            hamburger.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Initialize particle background
+            initParticles();
+            
+            // Add scroll animations
+            addScrollAnimations();
+            
+            // Contact form submission
+            setupContactForm();
+            
+            // Initialize 3D scene
+            initThreeJS();
+            
+            // Add scroll progress indicator
+            initScrollProgress();
+        });
+
+        function initParticles() {
+            // Initialize particles.js for the hero section
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: {
+                            value: 50,
+                            density: {
+                                enable: true,
+                                value_area: 800
+                            }
+                        },
+                        color: {
+                            value: "#8b5cf6"
+                        },
+                        shape: {
+                            type: "circle"
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 1,
+                                opacity_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 3,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                size_min: 0.1,
+                                sync: false
+                            }
+                        },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#4a6cf7",
+                            opacity: 0.4,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 1,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: "grab"
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: "push"
+                            },
+                            resize: true
+                        }
+                    }
+                });
+            }
+        }
+
+        function addScrollAnimations() {
+            // Add scroll-triggered animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe elements that should animate on scroll
+            document.querySelectorAll('.skill-item, .portfolio-card, .contact-item, .about-content > p').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Add parallax effect to hero section
+            window.addEventListener('scroll', function() {
+                const scrollPosition = window.pageYOffset;
+                const hero = document.querySelector('.hero');
+                if (hero) {
+                    hero.style.backgroundPositionY = -scrollPosition * 0.5 + 'px';
+                }
+                
+                // Update scroll progress indicator
+                updateScrollProgress();
+            });
+        }
+
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Simple validation
+                    if (name && email && message) {
+                        // In a real implementation, you would send this data to a server
+                        // Here we'll just show a success message
+                        const successMsg = document.getElementById('successMessage');
+                        successMsg.style.display = 'block';
+                        setTimeout(() => {
+                            successMsg.style.display = 'none';
+                        }, 5000);
+                        form.reset();
+                    } else {
+                        alert('Please fill in all fields.');
+                    }
+                });
+            }
+        }
+
+        // 3D Scene with Three.js
+        function initThreeJS() {
+            // Set up Three.js scene
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            
+            const canvas = document.getElementById('three-canvas');
+            renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            renderer.setClearColor(0x000000, 0);
+            canvas.appendChild(renderer.domElement);
+            
+            // Add some 3D objects
+            const torusGeometry = new THREE.TorusGeometry(3, 1, 16, 100);
+            const torusMaterial = new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true });
+            const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+            scene.add(torus);
+            
+            // Add a sphere
+            const sphereGeometry = new THREE.SphereGeometry(2, 32, 32);
+            const sphereMaterial = new THREE.MeshBasicMaterial({ color: 0x4a6cf7, wireframe: true });
+            const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+            sphere.position.x = 5;
+            scene.add(sphere);
+            
+            // Add a box
+            const boxGeometry = new THREE.BoxGeometry(2, 2, 2);
+            const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xec4899, wireframe: true });
+            const box = new THREE.Mesh(boxGeometry, boxMaterial);
+            box.position.x = -5;
+            scene.add(box);
+            
+            // Position camera
+            camera.position.z = 10;
+            
+            // Add ambient light
+            const ambientLight = new THREE.AmbientLight(0x404040);
+            scene.add(ambientLight);
+            
+            // Add directional light
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(1, 1, 1);
+            scene.add(directionalLight);
+            
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Rotate objects
+                torus.rotation.x += 0.005;
+                torus.rotation.y += 0.005;
+                sphere.rotation.x += 0.005;
+                sphere.rotation.y += 0.005;
+                box.rotation.x += 0.005;
+                box.rotation.y += 0.005;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+            });
+        }
+
+        function initScrollProgress() {
+            // Create scroll progress indicator
+            const progressContainer = document.createElement('div');
+            progressContainer.id = 'scroll-progress';
+            progressContainer.style.position = 'fixed';
+            progressContainer.style.top = '0';
+            progressContainer.style.left = '0';
+            progressContainer.style.width = '100%';
+            progressContainer.style.height = '4px';
+            progressContainer.style.background = 'rgba(0, 0, 0, 0.1)';
+            progressContainer.style.zIndex = '9999';
+            
+            const progressBar = document.createElement('div');
+            progressBar.id = 'scroll-progress-bar';
+            progressBar.style.height = '100%';
+            progressBar.style.background = 'linear-gradient(90deg, #4a6cf7, #8b5cf6)';
+            progressBar.style.width = '0%';
+            
+            progressContainer.appendChild(progressBar);
+            document.body.appendChild(progressContainer);
+        }
+
+        function updateScrollProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            
+            const progressBar = document.getElementById('scroll-progress-bar');
+            if (progressBar) {
+                progressBar.style.width = scrolled + '%';
+            }
+        }
+
+        // Additional interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to portfolio cards
+            const portfolioCards = document.querySelectorAll('.portfolio-card');
+            portfolioCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add hover effects to skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
